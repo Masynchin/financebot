@@ -12,7 +12,7 @@ var token = os.Getenv("BOT_TOKEN")
 var expenceService *ExpenceService
 
 func main() {
-	es, err := NewExpenceService("vacancies.db")
+	es, err := NewExpenceService("expences.db")
 	if err != nil {
 		log.Fatal(err)
 	}
