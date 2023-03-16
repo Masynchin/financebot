@@ -21,10 +21,9 @@ func GetExpencesReplyMarkup(expences []Expence) echotron.InlineKeyboardMarkup {
 
 // expenceToInlineButtonRow converts single expence to inline buttons row
 func expenceToInlineButtonRow(e Expence) []echotron.InlineKeyboardButton {
-	row := make([]echotron.InlineKeyboardButton, 0, 3)
-	row = append(row, echotron.InlineKeyboardButton{Text: e.Category, CallbackData: "1"})
-	row = append(row, echotron.InlineKeyboardButton{Text: strconv.Itoa(e.Amount), CallbackData: "2"})
-	delCallbackData := fmt.Sprintf("/del %v", e.Id)
-	row = append(row, echotron.InlineKeyboardButton{Text: "❌", CallbackData: delCallbackData})
-	return row
+	return []echotron.InlineKeyboardButton{
+		{Text: e.Category, CallbackData: "1"},
+		{Text: strconv.Itoa(e.Amount), CallbackData: "2"},
+		{Text: "❌", CallbackData: fmt.Sprintf("/del %v", e.Id)},
+	}
 }
